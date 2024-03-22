@@ -9,9 +9,21 @@ export function listarPedidos(arg0: string, listarPedidos: any) {
     throw new Error('Function not implemented.');
 }
 
-export function getPedidoById(arg0: string, getPedidoById: any) {
-    throw new Error('Function not implemented.');
-}
+export const getPedidoById = async (req: Request, res: Response) => {
+    try {
+        const pedidoId = parseInt(req.params.id, 10); 
+        const pedido = await Pedido.findByPk(pedidoId);
+
+        if (pedido) {
+            res.json(pedido);
+        } else {
+            res.status(404).json({ message: 'Pedido não encontrado' });
+        }
+    } catch (error) {
+        console.error('Erro ao buscar pedido', error);
+        res.status(500).json({ message: 'Erro ao buscar pedido' });
+    }
+};
 
 export function incluirPedido(arg0: string, incluirPedido: any) {
     throw new Error('Function not implemented.');
