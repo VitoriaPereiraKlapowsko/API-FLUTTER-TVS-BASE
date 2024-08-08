@@ -161,3 +161,26 @@ export const excluirItemDoPedido = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Erro ao excluir item do pedido" });
   }
 };
+
+export const getItemDoPedido = async (req: Request, res: Response) => {
+  try {
+    const itemId = parseInt(req.params.id, 10);
+    if (isNaN(itemId)) {
+      return res.status(400).json({ message: 'ID deve ser um número' });
+    }
+
+    const item = await ItemDoPedido.findByPk(itemId, {
+      include: [{ model: Pedido }, { model: Produto }]
+    });
+
+    if (!item) {
+      return res.status(404).json({ message: 'Item do pedido não encontrado...' });
+    }
+
+    res.json(item);
+  } catch (error) {
+    res.status(500).json({ message: 'Erro no servidor!' });
+  }
+};
+
+
