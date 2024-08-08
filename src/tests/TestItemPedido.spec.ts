@@ -3,6 +3,9 @@ import * as server from "../server";
 import { app } from "../server"; // Certifique-se de que o caminho está correto
 import { Request, Response } from "express";
 import { Produto } from "../models/Produto";
+import { Pedido } from '../models/Pedido';
+import { ItemDoPedido } from '../models/ItemDoPedido';
+import { Cliente } from '../models/Cliente';
 
 describe("Teste da Rota incluirProduto", () => {
   let produtoId: number;
@@ -130,3 +133,4 @@ describe("Teste da Rota atualizarProduto", () => {
     await Produto.destroy({ where: { id: produtoId } });
   });
 });
+
