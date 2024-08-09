@@ -11,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key});
 
-  static const appTitle = 'Projeto Razer';
+  static const appTitle = 'Atividade';
 
   @override
   Widget build(BuildContext context) {

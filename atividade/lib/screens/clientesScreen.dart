@@ -23,7 +23,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
   int editingIndex = -1;
 
   final String baseUrl =
-      'http://localhost:3000'; // Ajuste a URL conforme necessário
+      'http://localhost:3000/clientes'; // Ajuste a URL conforme necessário
   //  http://localhost:3000/clientes
 
   @override
